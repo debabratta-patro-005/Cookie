@@ -38,13 +38,11 @@ public class CookieController {
 
     public String generateToken(String username, String role) {
 
-        String token = Jwts.builder().setSubject(username)
+        return Jwts.builder().setSubject(username)
                 .claim("role", role)
                 .signWith(key)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 3600000))
                 .compact();
-
-        return token;
     }
 }
